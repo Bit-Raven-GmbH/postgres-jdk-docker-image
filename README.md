@@ -4,7 +4,8 @@ A simple docker image that contains postgres and a JDK - mainly for usage in CI/
 
 This image is useful if you need to run a database in a CI/CD pipeline.
 
-To use it you need following code in your Gitlab CI:
+
+## Gitlab
 
 ```yml
 test:
@@ -19,4 +20,5 @@ test:
     - psql -c "CREATE USER user WITH PASSWORD 'password' SUPERUSER;"
     - psql -c "CREATE DATABASE database;"
 ```
-Exchange user, password and database according to your database.
+
+Change user, password and database according to your database.
