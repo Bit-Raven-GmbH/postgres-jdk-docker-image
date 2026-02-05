@@ -1,9 +1,8 @@
 # Postgres JDK image
 
-A simple docker image that contains postgres and a JDK - mainly for usage in CI/CD pipelines.
+A simple docker image that contains postgres and a JDK.
 
-This image is useful if you need to run a database in a CI/CD pipeline.
-
+This image is useful if you need to run a database for your Java project in a CI/CD pipeline without hosting the database in a separate container.
 
 ## Gitlab
 
