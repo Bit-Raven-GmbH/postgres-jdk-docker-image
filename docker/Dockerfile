@@ -5,6 +5,6 @@ RUN apt-get update && apt-get install -y \
     maven \
     && rm -rf /var/lib/apt/lists/*
 
-#USER postgres
-#
-#RUN initdb
+USER postgres
+
+RUN initdb
