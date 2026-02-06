@@ -42,4 +42,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: false
-          tags: mauricemueller/postgres-java:latest, mauricemueller/postgres-java:${{ inputs.tag }}
+          tags: mauricemueller/postgres-java:latest, mauricemueller/postgres-java:${{ env.TAG }}
