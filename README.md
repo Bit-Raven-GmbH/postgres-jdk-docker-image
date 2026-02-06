@@ -11,10 +11,7 @@ test:
   stage: test
   image:
     name: mauricemueller/postgres-java:latest
-    docker:
-      user: postgres
   script:
-    - initdb
     - pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
     - psql -c "CREATE USER user WITH PASSWORD 'password' SUPERUSER;"
     - psql -c "CREATE DATABASE database;"
