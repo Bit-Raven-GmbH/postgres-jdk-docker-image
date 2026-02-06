@@ -41,5 +41,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: false
-          image: mauricemueller/postgres-java
-          tags: latest, ${{ env.TAG }}-${{ env.DATE }}
+          tags: mauricemueller/postgres-java:latest, mauricemueller/postgres-java:${{ env.TAG }}-${{ env.DATE }}
