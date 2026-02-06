@@ -32,7 +32,7 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "date=$(date +'%Y%m')" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%Y%m')" >> $GITHUB_ENV
 
       - name: Get latest release tag
         id: release
@@ -50,7 +50,7 @@ jobs:
           images: mauricemueller/postgres-java
           tags: |
             type=raw,value=latest
-            type=raw,value=${{ steps.release.outputs.tag }}-${{ steps.date.outputs.date }}
+            type=raw,value=${{ steps.release.outputs.tag }}-${{ date }}
 
       - name: Build and push to docker
         uses: docker/build-push-action@v5
@@ -59,4 +59,3 @@ jobs:
           file: ./docker/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
