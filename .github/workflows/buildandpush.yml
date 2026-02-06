@@ -1,9 +1,6 @@
 name: Build and push docker image
 
 on:
-  push:
-    tags: 'r-*'
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
@@ -19,18 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Determine image tag
-        id: tag
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "TAG=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
-          else
-            FULL_TAG="${{ github.event.ref_name }}"
-            IMAGE_TAG="${FULL_TAG#*-}"
-            IMAGE_TAG="${IMAGE_TAG%%-*}"
-            echo "TAG=${IMAGE_TAG}" >> $GITHUB_ENV
-          fi
-
       - name: Login to dockerhub
         uses: docker/login-action@v3
         with:
@@ -43,4 +28,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: false
-          tags: mauricemueller/postgres-java:latest, mauricemueller/postgres-java:${{ env.TAG }}
+          tags: mauricemueller/postgres-java:latest, mauricemueller/postgres-java:${{ inputs.tag }}
