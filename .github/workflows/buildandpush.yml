@@ -26,6 +26,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./docker/Dockerfile
-          push: false
+          push: true
           tags: mauricemueller/postgres-java:latest, mauricemueller/postgres-java:${{ inputs.tag }}
