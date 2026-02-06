@@ -31,15 +31,16 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y%m')" >> $GITHUB_OUTPUT
+        run: |
+          echo "date=$(date +'%Y%m')" >> $GITHUB_OUTPUT
 
       - name: Get latest release tag
         id: release
         run: |
-#           Fetch tags
+          # Fetch tags
           git fetch --tags
           # Get the latest tag, fallback to 'trixie-18-jdk-25' if no tags exist
-          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>/dev/null || echo "trixie-18-jdk-25")
+          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "trixie-18-jdk-25")
           echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
 
       - name: Docker meta
