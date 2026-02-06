@@ -8,3 +8,4 @@ RUN apt-get update && apt-get install -y \
 USER postgres
 
 RUN initdb
+RUN pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
